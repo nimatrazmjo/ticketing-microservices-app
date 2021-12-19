@@ -1,24 +1,19 @@
 apiVersion: skaffold/v2beta26
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./k8s/*
+metadata:
+  name: ticketing
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticket-335609
   artifacts:
-    # - image: razmjo/auth
-    - image: us.gcr.io/ticket-335609/auth
-      context: auth
-      docker:
-        dockerfile: Dockerfile
-        noCache: false
-        squash: false
-      sync:
+  - image: us.gcr.io/microservices-335612/auth
+    context: auth
+    docker:
+      dockerfile: Dockerfile
+    sync:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    
+deploy:
+  kubectl:
+    manifests:
+    - k8s/auth-depl.yaml
+    - k8s/ingress-service.yaml
