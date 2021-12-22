@@ -4,7 +4,8 @@ metadata:
   name: ticketing
 build:
   artifacts:
-  - image: us.gcr.io/microservices-335612/auth
+  # - image: us.gcr.io/microservices-335612/auth
+  - image: razmjo/auth
     context: auth
     docker:
       dockerfile: Dockerfile
@@ -15,5 +16,4 @@ build:
 deploy:
   kubectl:
     manifests:
-    - k8s/auth-depl.yaml
-    - k8s/ingress-service.yaml
+    - ./k8s/*
