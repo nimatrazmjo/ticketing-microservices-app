@@ -15,6 +15,7 @@ export const ErrorHandler = (
     if (err instanceof DatabaseConnectionError) {
         return res.status(500).json({errors: err.serializeError()})
     }
+    
     res.status(err.statusCode).json({
       errors: err.serializeError()
     });

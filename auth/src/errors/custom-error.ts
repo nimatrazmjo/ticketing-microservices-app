@@ -1,3 +1,4 @@
+import { ErrorResponseType } from "./error-response-type";
 export abstract class CustomError extends Error {
   abstract statusCode: number;
 
@@ -6,5 +7,5 @@ export abstract class CustomError extends Error {
     Object.setPrototypeOf(this,CustomError.prototype);
   }
 
-  abstract serializeError(): {message: string, field?: string}[]
+  abstract serializeError(): ErrorResponseType[]
 }

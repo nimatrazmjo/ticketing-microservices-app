@@ -25,7 +25,6 @@ app.use(ErrorHandler);
 
 const start = () => {
   try {
-    console.log('hereeeee')
      mongoose.connect(`mongodb://auth-mongo-service:27017/auth`
     // ,
     // {
