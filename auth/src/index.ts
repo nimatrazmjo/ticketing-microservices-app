@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 import { currentUserRounter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
@@ -11,8 +12,13 @@ import { ErrorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
+app.set('trust proxy', true);
 app.use(json());
-
+app.use(
+  cookieSession({
+     signed: false,
+    secure: true
+  }));
 app.use(currentUserRounter);
 app.use(signinRouter);
 app.use(signoutRounter);
@@ -24,6 +30,9 @@ app.all('*',async () => {
 app.use(ErrorHandler);
 
 const start = () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT key is not define');
+  }
   try {
      mongoose.connect(`mongodb://auth-mongo-service:27017/auth`
     // ,
