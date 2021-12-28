@@ -13,6 +13,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+  - image: razmjo/ticketing-client
+    context: client
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/.js'
+          dest: .
 deploy:
   kubectl:
     manifests:

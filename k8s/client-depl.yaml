@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  client-depl
+  namespace: default
+  labels:
+    app:  client-depl
+spec:
+  selector:
+    matchLabels:
+      app: client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  client
+    spec:
+      containers:
+      - name:  client
+        image:  razmjo/ticketing-client:latest
+        ports:
+        - containerPort:  3000
+          name:  client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  selector:
+    app: client
+  type: ClusterIP
+  ports:
+  - name: client-service
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
