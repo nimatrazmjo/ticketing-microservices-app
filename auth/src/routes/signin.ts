@@ -42,8 +42,7 @@ router.post('/api/users/signin', [
   req.session = {
     jwt: userJwt
   };
-  console.log(req.session);
-  res.status(201).json(userExists);
+  res.status(200).json(userExists);
 });
 
 export {router as signinRouter};

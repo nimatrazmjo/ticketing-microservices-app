@@ -24,7 +24,6 @@ router.post('/api/users/signup',[
   const user = User.build({email, password});
 
   await user.save();
-  
   // Generate JTW
   const userJwt= jwt.sign({
     id: user._id,
