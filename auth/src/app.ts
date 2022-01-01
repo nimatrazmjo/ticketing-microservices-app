@@ -8,8 +8,8 @@ import { currentUserRounter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRounter } from './routes/signout';
 import { signupRouter } from './routes/signup';
-import { ErrorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import { ErrorHandler } from '@nimatrazmjo/ticketingcommon';
+import { NotFoundError } from '@nimatrazmjo/ticketingcommon';
 
 const app = express();
 app.set('trust proxy', true);

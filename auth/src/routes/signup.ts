@@ -1,9 +1,9 @@
 import { Router, Request, Response } from "express";
 import { body } from 'express-validator';
-import { BadRequestError } from "../errors/bad-request-error";
+import { BadRequestError } from "@nimatrazmjo/ticketingcommon";
 import { User } from "../models/user";
 import jwt from 'jsonwebtoken';
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest } from "@nimatrazmjo/ticketingcommon";
 const router = Router();
 
 router.post('/api/users/signup',[
