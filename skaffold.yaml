@@ -5,7 +5,7 @@ metadata:
 build:
   artifacts:
   # - image: us.gcr.io/microservices-335612/auth
-  - image: razmjo/auth
+  - image: razmjo/ticketing-auth
     context: auth
     docker:
       dockerfile: Dockerfile
@@ -15,6 +15,14 @@ build:
             dest: .
   - image: razmjo/ticketing-client
     context: client
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/*.js'
+          dest: .
+  - image: razmjo/ticketing-ticket
+    context: tickets
     docker:
       dockerfile: Dockerfile
     sync:
