@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  ticket-deployment
+  namespace: default
+  labels:
+    app:  ticket
+spec:
+  selector:
+    matchLabels:
+      app: ticket
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  ticket
+    spec:
+      containers:
+      - name:  ticket
+        image:  razmjo/ticketing-ticket:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-service
+  namespace: default
+spec:
+  selector:
+    app: ticket
+  type: ClusterIP
+  ports:
+  - name: ticket-service
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
