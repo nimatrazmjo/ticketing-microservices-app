@@ -12,8 +12,11 @@
   "dependencies": {
     "@types/express": "^4.17.13",
     "express": "^4.17.2",
+<<<<<<< HEAD
     "express-async-errors": "^3.1.1",
     "mongoose": "^6.1.4",
+=======
+>>>>>>> a303eee56c19910743bf28713897a67e22149e03
     "ts-node-dev": "^1.1.8"
   },
   "devDependencies": {
