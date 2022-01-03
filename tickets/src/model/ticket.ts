@@ -12,4 +12,5 @@ const schema = new Schema<ITicket>({
   userId: Schema.Types.ObjectId
 });
 
-export default model<ITicket>('Ticket',schema);
+const Ticket = model<ITicket>('Ticket',schema);
+export { Ticket }

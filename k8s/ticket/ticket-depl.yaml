@@ -23,6 +23,9 @@ spec:
       containers:
       - name:  ticket
         image:  razmjo/ticketing-ticket:latest
+        env:
+          - name: MONGO_URI
+            value: mongodb://ticket-mongo-service:27017/ticket
 ---
 apiVersion: v1
 kind: Service
