@@ -4,7 +4,7 @@ import { signUpAndReturnCookie  } from '../../test/get-auth-cookie';
 
 describe('GET /current-user',()=>{
   it('should response with details about the current user', async ()=>{
-      const cookie = await signUpAndReturnCookie();
+      const cookie = await signUpAndReturnCookie();  
       const response = await request(app)
         .get('/api/users/current-user')
         .set('Cookie', cookie)

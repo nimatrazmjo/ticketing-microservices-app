@@ -4,7 +4,7 @@ const start = () => {
   if (!process.env.JWT_KEY) {
     throw new Error('JWT key is not define');
   }
- if (!process.env.MONGO_URL) {
+ if (!process.env.MONGO_URI) {
    throw new Error ('MONGO_URL must be define');
  }
   try {
