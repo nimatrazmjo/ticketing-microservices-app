@@ -27,7 +27,7 @@ build:
       dockerfile: Dockerfile
     sync:
       manual:
-        - src: 'src/**/*.js'
+        - src: 'src/**/*.ts'
           dest: .
 deploy:
   kubectl:
